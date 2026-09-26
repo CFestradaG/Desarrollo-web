@@ -1,0 +1,176 @@
+¿QUÉ DEBE REALIZAR?
+1. Node.js y Express
+Complete y/o corrija la configuración necesaria para que el proyecto pueda instalarse y ejecutarse correctamente mediante:
+
+npm install
+
+npm start
+
+Debe funcionar el siguiente endpoint:
+
+GET /api/status
+
+El cual deberá responder correctamente con:
+
+{
+  "estado": "OK",
+  "aplicacion": "Parcial Desarrollo Web"
+}
+2. MongoDB y Mongoose
+Complete y/o corrija la conexión de la aplicación con MongoDB utilizando Mongoose.
+
+La aplicación deberá trabajar con la base de datos:
+
+parcial_dw
+
+Complete los modelos necesarios para manejar usuarios y tareas, aplicando correctamente:
+
+Tipos de datos.
+
+Campos obligatorios.
+
+Email único.
+
+Valores permitidos.
+
+Relación entre una tarea y el usuario que la creó.
+
+Validaciones correspondientes.
+
+3. API REST de tareas
+Complete las funcionalidades necesarias para que funcionen correctamente las siguientes operaciones:
+
+POST /api/tareas
+
+GET /api/tareas
+
+GET /api/tareas/:id
+
+PUT /api/tareas/:id
+
+DELETE /api/tareas/:id
+
+Las respuestas de la API deberán utilizar JSON y códigos HTTP apropiados según el resultado de cada operación.
+
+Entre los códigos que pueden utilizarse se encuentran:
+
+200 – Operación realizada correctamente.
+
+201 – Recurso creado correctamente.
+
+400 – Solicitud o datos incorrectos.
+
+401 – Usuario no autenticado.
+
+404 – Recurso no encontrado.
+
+4. Registro de usuarios y Hashing
+Implemente correctamente:
+
+POST /api/auth/registro
+
+El registro deberá:
+
+Validar los datos recibidos.
+
+Almacenar al usuario en MongoDB.
+
+Evitar el registro de emails duplicados.
+
+Aplicar hashing a la contraseña.
+
+No almacenar contraseñas en texto plano.
+
+No devolver la contraseña del usuario en las respuestas de la API.
+
+5. Login y JWT
+Implemente correctamente:
+
+POST /api/auth/login
+
+El proceso deberá:
+
+Verificar el email del usuario.
+
+Verificar correctamente su contraseña.
+
+Rechazar credenciales incorrectas.
+
+Generar un JWT cuando las credenciales sean válidas.
+
+El secreto utilizado para generar y verificar el JWT deberá obtenerse mediante la variable de entorno:
+
+JWT_SECRET
+
+No debe escribir directamente el secreto dentro del código fuente.
+
+6. Protección de rutas
+Complete el mecanismo de autenticación para recibir el JWT mediante el encabezado:
+
+Authorization: Bearer TOKEN
+
+Las siguientes operaciones deberán requerir autenticación:
+
+POST /api/tareas
+
+PUT /api/tareas/:id
+
+DELETE /api/tareas/:id
+
+Una solicitud sin token o con un token inválido deberá ser rechazada.
+
+7. Integración de la aplicación
+Antes de realizar su entrega, compruebe que su aplicación permite completar correctamente el siguiente proceso:
+
+Registrar usuario → Iniciar sesión → Obtener JWT → Crear tarea → Consultar tarea → Actualizar tarea → Eliminar tarea
+
+Las funcionalidades no serán evaluadas únicamente de manera independiente. También se comprobará que los diferentes componentes de la aplicación funcionen correctamente de manera integrada.
+
+VARIABLES DE ENTORNO
+Su aplicación deberá poder trabajar con una configuración equivalente a:
+
+PORT=3000
+MONGO_URI=mongodb://127.0.0.1:27017/parcial_dw
+JWT_SECRET=SU_CLAVE
+Debe incluir en su proyecto el archivo:
+
+.env.example
+
+No debe incluir su archivo .env en la entrega.
+
+ENTREGA DEL EXAMEN
+Antes de entregar, compruebe que su proyecto pueda instalarse mediante:
+
+npm install
+
+y ejecutarse mediante:
+
+npm start
+
+Posteriormente:
+
+Verifique que está entregando la versión final de su proyecto.
+
+No incluya la carpeta node_modules.
+
+No incluya el archivo .env.
+
+Sí incluya .env.example.
+
+Incluya package.json.
+
+Incluya package-lock.json.
+
+Incluya todo el código fuente necesario para ejecutar el proyecto.
+
+Comprima el proyecto en formato .zip.
+
+Nombre el archivo utilizando el siguiente formato:
+
+APELLIDO_NOMBRE.zip
+
+Ejemplo:
+
+PEREZ_JUAN.zip
+
+Adjunte el archivo ZIP en Canvas antes de finalizar el examen.
