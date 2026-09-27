@@ -4,6 +4,14 @@ const Tarea = require("../models/Tarea");
 
 const router = express.Router();
 
+function responderError(res, error, mensaje, status = 500) {
+  const esValidacion = error.name === "ValidationError" || error.name === "CastError";
+  return res.status(esValidacion ? 400 : status).json({
+    mensaje,
+    error: error.message
+  });
+}
+
 // GET /api/tareas
 router.get("/", async (req, res) => {
   try {
@@ -14,10 +22,7 @@ router.get("/", async (req, res) => {
       tareas
     });
   } catch (error) {
-    res.status(500).json({
-      mensaje: "Error al obtener las tareas",
-      error: error.message
-    });
+    responderError(res, error, "Error al obtener las tareas");
   }
 });
 
@@ -45,10 +50,7 @@ router.get("/:id", async (req, res) => {
       tarea
     });
   } catch (error) {
-    res.status(500).json({
-      mensaje: "Error al obtener la tarea",
-      error: error.message
-    });
+    responderError(res, error, "Error al obtener la tarea");
   }
 });
 
@@ -62,10 +64,7 @@ router.post("/", async (req, res) => {
       tarea
     });
   } catch (error) {
-    res.status(400).json({
-      mensaje: "Datos de tarea inválidos",
-      error: error.message
-    });
+    responderError(res, error, "No se pudo crear la tarea", 400);
   }
 });
 
@@ -96,10 +95,7 @@ router.put("/:id", async (req, res) => {
       tarea
     });
   } catch (error) {
-    res.status(400).json({
-      mensaje: "No se pudo actualizar la tarea",
-      error: error.message
-    });
+    responderError(res, error, "No se pudo actualizar la tarea", 500);
   }
 });
 
@@ -127,10 +123,7 @@ router.delete("/:id", async (req, res) => {
       tarea
     });
   } catch (error) {
-    res.status(500).json({
-      mensaje: "Error al eliminar la tarea",
-      error: error.message
-    });
+    responderError(res, error, "Error al eliminar la tarea");
   }
 });
 

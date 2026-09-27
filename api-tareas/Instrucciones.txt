@@ -1,0 +1,189 @@
+API REST para Gestión de Tareas Académicas
+Objetivo
+Desarrollar una API REST utilizando Node.js, npm, Express y MongoDB, que permita administrar tareas académicas.
+
+La aplicación deberá recibir y devolver información utilizando formato JSON.
+
+El objetivo de la actividad es integrar los conceptos vistos en clase relacionados con desarrollo backend, creación de servidores web, manejo de rutas, métodos HTTP, almacenamiento en MongoDB y construcción de servicios REST.
+
+Descripción
+Se debe desarrollar una aplicación backend para gestionar tareas académicas de diferentes cursos.
+
+Cada tarea deberá contener como mínimo la siguiente información:
+
+Título.
+
+Curso.
+
+Descripción.
+
+Fecha de entrega.
+
+Prioridad.
+
+Estado.
+
+Ejemplo de una tarea:
+
+{
+  "titulo": "Investigación REST API",
+  "curso": "Desarrollo Web",
+  "descripcion": "Investigar los principios básicos de una API REST",
+  "fechaEntrega": "2026-09-20",
+  "prioridad": "ALTA",
+  "estado": "PENDIENTE"
+}
+Requerimientos
+El proyecto deberá desarrollarse utilizando:
+
+Node.js.
+
+npm.
+
+Express.
+
+MongoDB.
+
+Mongoose.
+
+JSON.
+
+El proyecto deberá iniciarse mediante npm utilizando alguno de los siguientes comandos:
+
+npm start
+o:
+
+npm run dev
+La información deberá almacenarse permanentemente en MongoDB.
+
+No se permite almacenar los datos únicamente en arreglos o variables dentro del código.
+
+Endpoints obligatorios
+1. Obtener todas las tareas
+GET /api/tareas
+Debe retornar todas las tareas almacenadas.
+
+2. Obtener una tarea por ID
+GET /api/tareas/:id
+Debe buscar una tarea utilizando su identificador generado por MongoDB.
+
+Si la tarea no existe, debe retornar un mensaje apropiado.
+
+3. Crear una tarea
+POST /api/tareas
+Debe recibir los datos mediante JSON.
+
+Ejemplo:
+
+{
+  "titulo": "Proyecto Node.js",
+  "curso": "Desarrollo Web",
+  "descripcion": "Crear una API REST utilizando Express",
+  "fechaEntrega": "2026-09-25",
+  "prioridad": "ALTA",
+  "estado": "PENDIENTE"
+}
+4. Actualizar una tarea
+PUT /api/tareas/:id
+Debe permitir modificar la información de una tarea existente.
+
+5. Eliminar una tarea
+DELETE /api/tareas/:id
+Debe eliminar una tarea utilizando su identificador.
+
+Códigos HTTP
+La API deberá utilizar códigos HTTP apropiados.
+
+Como mínimo:
+
+200 operación exitosa.
+
+201 recurso creado.
+
+400 solicitud incorrecta.
+
+404 recurso no encontrado.
+
+500 error interno del servidor.
+
+Respuestas JSON
+Todas las respuestas generadas por la API deberán utilizar formato JSON.
+
+Ejemplo:
+
+{
+  "mensaje": "Tarea creada correctamente",
+  "tarea": {
+    "titulo": "Proyecto Node.js",
+    "curso": "Desarrollo Web"
+  }
+}
+Estructura recomendada
+Puede utilizarse una estructura similar a:
+
+api-tareas/
+│
+├── models/
+│   └── Tarea.js
+│
+├── routes/
+│   └── tareas.routes.js
+│
+├── .env
+├── package.json
+├── server.js
+└── README.md
+No es obligatorio utilizar exactamente esta estructura, pero el proyecto deberá estar organizado.
+
+README
+El archivo README.md deberá indicar como mínimo:
+
+Nombre del proyecto.
+
+Descripción.
+
+Requisitos.
+
+Cómo instalar las dependencias.
+
+Cómo ejecutar el proyecto.
+
+Endpoints disponibles.
+
+Entrega
+Entregar el proyecto completo comprimido en formato ZIP conteniendo todo el código para poderlo ejecutar.
+
+Ademas un video mostrando el funcionamiento completo.
+
+No debe incluirse la carpeta:
+
+node_modules
+Las dependencias deberán poder instalarse ejecutando:
+
+npm install
+Puntos extra: Postman
+Puede obtener puntos adicionales utilizando Postman.
+
+Crear una colección en Postman que permita probar correctamente:
+
+GET.
+
+GET por ID.
+
+POST.
+
+PUT.
+
+DELETE.
+
+Incluir alguna de las siguientes opciones:
+
+Variables de entorno.
+
+Variable para almacenar el ID de una tarea.
+
+Pruebas automáticas.
+
+Validación del código HTTP.
+
+Validación de alguna propiedad de la respuesta JSON.
